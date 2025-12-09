@@ -1,0 +1,2189 @@
+---
+title: Advanced Settings
+---
+
+{/* Build timestamp: 1765316906813 - Forces cache invalidation */}
+
+**Last Updated:** 12/9/2025
+
+---
+
+
+
+# Advanced Settings
+
+The following settings can be added to the .env file and changed as you need them.
+
+## Application Configuration
+
+
+
+### APP_URL
+
+```
+APP_URL=http://localhost
+```
+
+Only relevant for URLs generated when using LinkAce CLI commands.
+
+### APP_ENV
+
+```
+APP_ENV=production
+```
+
+The environment is usually 'production' but may be changed to 'local' for development.
+
+### APP_DEBUG
+
+```
+APP_DEBUG=false
+```
+
+Enable the debug mode if you are running into issues or while developing.
+
+### APP_DEMO
+
+```
+APP_DEMO=false
+```
+
+Enable demo mode to restrict certain actions. Used for demonstration instances.
+
+### APP_TIMEZONE
+
+```
+APP_TIMEZONE=UTC
+```
+
+Change the timezone of the core application here. It does not affect the timezone set in the user settings but changes how LinkAce saves dates and times in the database.
+
+⚠️ Warning: Be very careful when using this setting as it can have unintended side effects! There won't be any support for broken applications due to a changed timezone.
+
+### APP_URL
+
+```
+APP_URL=http://localhost
+```
+
+Only relevant for URLs generated when using LinkAce CLI commands.
+
+### APP_ENV
+
+```
+APP_ENV=production
+```
+
+The environment is usually 'production' but may be changed to 'local' for development.
+
+### APP_DEBUG
+
+```
+APP_DEBUG=false
+```
+
+Enable the debug mode if you are running into issues or while developing.
+
+### APP_TIMEZONE
+
+```
+APP_TIMEZONE=UTC
+```
+
+Change the timezone of the core application here. It does not affect the timezone set in the user settings but changes how LinkAce saves dates and times in the database.
+
+⚠️ Warning: Be very careful when using this setting as it can have unintended side effects! There won't be any support for broken applications due to a changed timezone.
+
+## Session Configuration
+
+
+
+### SESSION_LIFETIME
+
+```
+SESSION_LIFETIME=10080
+```
+
+Set the time after a session expires automatically, in minutes. Default is 7 days (10080 minutes).
+
+### SESSION_DOMAIN
+
+```
+SESSION_DOMAIN=
+```
+
+You may define a specific domain for the session.
+
+### SESSION_SECURE_COOKIE
+
+```
+SESSION_SECURE_COOKIE=[true/false]
+```
+
+Configure whether to use secure cookies for sessions.
+
+### SESSION_CONNECTION
+
+```
+SESSION_CONNECTION=
+```
+
+The cache connection to use for session storage when using a cache-based session driver.
+
+### SESSION_STORE
+
+```
+SESSION_STORE=
+```
+
+The cache store to use for session storage when using a cache-based session driver.
+
+### SESSION_LIFETIME
+
+```
+SESSION_LIFETIME=10080
+```
+
+Set the time after a session expires automatically, in minutes. Default is 7 days (10080 minutes).
+
+### SESSION_DOMAIN
+
+```
+SESSION_DOMAIN=
+```
+
+You may define a specific domain for the session.
+
+### SESSION_SECURE_COOKIE
+
+```
+SESSION_SECURE_COOKIE=[true/false]
+```
+
+Configure whether to use secure cookies for sessions.
+
+## API Configuration
+
+
+
+### API_RATE_LIMIT
+
+```
+API_RATE_LIMIT=60,1
+```
+
+Configure the API rate limit here: the first number defines the number of requests, the second the time frame for the requests. 60,1 is the default which means: 60 requests per 1 minute.
+
+## Mail Configuration
+
+
+
+### Basic Mail Settings
+
+```
+MAIL_FROM_ADDRESS=[email protected]
+MAIL_FROM_NAME=LinkAce
+```
+
+Configure the sender address and name for outgoing emails.
+
+### MAIL_MAILER
+
+```
+MAIL_MAILER=smtp
+```
+
+Set the driver used for sending email here, default is log.
+
+### SMTP Configuration
+
+```
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+```
+
+Set the SMTP host, port, username, password, and encryption settings. If your SMTP server uses encrypted connections, enable it by setting MAIL_ENCRYPTION to tls.
+
+### Sendmail Configuration
+
+```
+MAIL_SENDMAIL_PATH="/usr/sbin/sendmail -bs -i"
+```
+
+If you want to use Sendmail, set the path here.
+
+### MAIL_VERIFY_TLS
+
+```
+MAIL_VERIFY_TLS=true
+```
+
+If you are using self-signed certificates, set this to false to not verify SSL connections.
+
+### MAIL_LOG_CHANNEL
+
+```
+MAIL_LOG_CHANNEL=
+```
+
+When using the 'log' mail driver, specify which log channel to use for mail logging.
+
+### Basic Mail Settings
+
+```
+MAIL_FROM_ADDRESS=[email protected]
+MAIL_FROM_NAME=LinkAce
+```
+
+Configure the sender address and name for outgoing emails.
+
+### MAIL_MAILER
+
+```
+MAIL_MAILER=smtp
+```
+
+Set the driver used for sending email here, default is log.
+
+### SMTP Configuration
+
+```
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+```
+
+Set the SMTP host, port, username, password, and encryption settings. If your SMTP server uses encrypted connections, enable it by setting MAIL_ENCRYPTION to tls.
+
+### Sendmail Configuration
+
+```
+MAIL_SENDMAIL_PATH="/usr/sbin/sendmail -bs -i"
+```
+
+If you want to use Sendmail, set the path here.
+
+### MAIL_VERIFY_TLS
+
+```
+MAIL_VERIFY_TLS=true
+```
+
+If you are using self-signed certificates, set this to false to not verify SSL connections.
+
+## Database Configuration
+
+
+
+### Basic Database Settings
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=linkace
+DB_USERNAME=linkace
+DB_PASSWORD=superSecurePassword
+```
+
+Configure your database connection settings. Some of these configuration options are only available for specific database systems.
+
+### DATABASE_URL
+
+```
+DATABASE_URL="mysql://sandy:[email protected]:3306/db"
+```
+
+Alternative connection string format. If provided, this takes precedence over individual DB_* settings.
+
+### Advanced Database Settings
+
+```
+DB_CHARSET=utf8mb4
+DB_COLLATION=utf8mb4_unicode_ci
+DB_ENGINE=InnoDB
+DB_SOCKET=
+```
+
+Advanced database configuration options. DB_CHARSET sets the character set, DB_COLLATION sets the collation, DB_ENGINE sets the storage engine (MySQL/MariaDB), and DB_SOCKET allows connection via Unix socket.
+
+### Database SSL Settings
+
+```
+DB_SSL_MODE=prefer
+MYSQL_VERIFY_SERVER_CERT=true
+MYSQL_SSL_KEY=
+MYSQL_SSL_CERT=
+MYSQL_SSL_CA=
+```
+
+SSL settings for secure database connections.
+
+### Basic Database Settings
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=linkace
+DB_USERNAME=linkace
+DB_PASSWORD=superSecurePassword
+```
+
+Configure your database connection settings. Some of these configuration options are only available for specific database systems.
+
+### Advanced Database Settings
+
+```
+DB_CHARSET=utf8mb4
+DB_COLLATION=utf8mb4_unicode_ci
+DB_ENGINE=InnoDB
+DB_SOCKET=
+DATABASE_URL="mysql://sandy:[email protected]:3306/db"
+```
+
+Advanced database configuration options for charset, collation, engine, and connection URL.
+
+### Database SSL Settings
+
+```
+DB_SSL_MODE=prefer
+MYSQL_VERIFY_SERVER_CERT=true
+MYSQL_SSL_KEY=
+MYSQL_SSL_CERT=
+MYSQL_SSL_CA=
+```
+
+SSL settings for secure database connections.
+
+## Meta Generation
+
+Configure how LinkAce should handle HTTP requests when fetching the meta data of websites when adding links.
+
+### APP_USER_AGENT
+
+```
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+```
+
+The user agent may be customized to enhance credibility.
+
+### META_GENERATION_TIMEOUT
+
+```
+META_GENERATION_TIMEOUT=20
+```
+
+The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
+
+### META_GENERATION_CUSTOM_HEADERS
+
+```
+META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
+```
+
+You can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
+
+## Backup Configuration
+
+
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### BACKUP_ARCHIVE_PASSWORD
+
+```
+BACKUP_ARCHIVE_PASSWORD=
+```
+
+Set a password to encrypt backup archives. Leave empty for unencrypted backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### AWS_URL
+
+```
+AWS_URL=
+```
+
+Custom URL for accessing your S3 bucket or S3-compatible service.
+
+### AWS_ENDPOINT
+
+```
+AWS_ENDPOINT=
+```
+
+Custom endpoint for S3-compatible services (e.g., MinIO, DigitalOcean Spaces).
+
+### AWS_USE_PATH_STYLE_ENDPOINT
+
+```
+AWS_USE_PATH_STYLE_ENDPOINT=[true/false]
+```
+
+Enable path-style endpoint URLs (bucket.s3.region.amazonaws.com/key vs s3.region.amazonaws.com/bucket/key). Required for some S3-compatible services.
+
+⚠️ Warning: Only use these advanced settings if you know what you are doing.
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### CACHE_DRIVER
+
+```
+CACHE_DRIVER=file
+```
+
+Set the default cache driver. Options include file, redis, memcached, database, and others.
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_USERNAME=
+REDIS_DB=0
+REDIS_CACHE_DB=1
+```
+
+Set the Redis connection here if you want to use it. REDIS_DB is used for general Redis connections, while REDIS_CACHE_DB is specifically for cache storage.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### AUDIT_CONSOLE_EVENTS
+
+```
+AUDIT_CONSOLE_EVENTS=true
+```
+
+Enable or disable auditing of console command events.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+SENTRY_ENVIRONMENT=
+```
+
+Configure LinkAce to report errors to Sentry.io. SENTRY_LARAVEL_DSN (or SENTRY_DSN as fallback) sets the Data Source Name for Sentry. SENTRY_ENVIRONMENT allows you to specify the environment name for better error tracking.
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ **Warning:** You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+LOG_LEVEL=debug
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_CONNECTION=database
+```
+If you are using Redis, you may switch `SESSION_DRIVER` and `CACHE_DRIVER` to "redis" or "memcache" to improve performance. `LOG_LEVEL` controls the minimum level of log messages (debug, info, notice, warning, error, critical, alert, emergency). `QUEUE_CONNECTION` defines the default queue connection (note: this replaces the deprecated `QUEUE_DRIVER`).
+
+### FILESYSTEM_DISK
+```
+FILESYSTEM_DISK=local
+```
+Set the default filesystem disk for file storage. Options include `local`, `public`, `s3`, etc.
+
+### LOG_DEPRECATIONS_CHANNEL
+```
+LOG_DEPRECATIONS_CHANNEL=null
+```
+Specify a separate log channel for deprecation warnings. Set to `null` to disable deprecation logging.
+
+### Using Redis Sockets
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+If you want to use Redis via a Unix socket, you can configure these settings. Set a proper path to your Redis socket.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+sites when adding links.
+
+### APP_USER_AGENT
+
+```
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+```
+
+The user agent may be customized to enhance credibility.
+
+### META_GENERATION_TIMEOUT
+
+```
+META_GENERATION_TIMEOUT=20
+```
+
+The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
+
+### META_GENERATION_CUSTOM_HEADERS
+
+```
+META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
+```
+
+You can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
+
+## Backup Configuration
+
+
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### BACKUP_ARCHIVE_PASSWORD
+
+```
+BACKUP_ARCHIVE_PASSWORD=
+```
+
+Set a password to encrypt backup archives. Leave empty for unencrypted backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### AWS_URL
+
+```
+AWS_URL=
+```
+
+Custom URL for accessing your S3 bucket or S3-compatible service.
+
+### AWS_ENDPOINT
+
+```
+AWS_ENDPOINT=
+```
+
+Custom endpoint for S3-compatible services (e.g., MinIO, DigitalOcean Spaces).
+
+### AWS_USE_PATH_STYLE_ENDPOINT
+
+```
+AWS_USE_PATH_STYLE_ENDPOINT=[true/false]
+```
+
+Enable path-style endpoint URLs (bucket.s3.region.amazonaws.com/key vs s3.region.amazonaws.com/bucket/key). Required for some S3-compatible services.
+
+⚠️ Warning: Only use these advanced settings if you know what you are doing.
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### CACHE_DRIVER
+
+```
+CACHE_DRIVER=file
+```
+
+Set the default cache driver. Options include file, redis, memcached, database, and others.
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_USERNAME=
+REDIS_DB=0
+REDIS_CACHE_DB=1
+```
+
+Set the Redis connection here if you want to use it. REDIS_DB is used for general Redis connections, while REDIS_CACHE_DB is specifically for cache storage.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+### AUDITING_ENABLED
+```
+AUDITING_ENABLED=[true/false]
+```
+You can completely disable all audit logs for LinkAce with this option.
+
+### AUDIT_CONSOLE_EVENTS
+```
+AUDIT_CONSOLE_EVENTS=true
+```
+Enable or disable auditing of console command events.
+
+### TRUSTED_PROXIES
+```
+TRUSTED_PROXIES=*
+```
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+SENTRY_ENVIRONMENT=
+```
+Configure LinkAce to report errors to Sentry.io. `SENTRY_LARAVEL_DSN` (or `SENTRY_DSN` as fallback) sets the Data Source Name for Sentry. `SENTRY_ENVIRONMENT` allows you to specify the environment name for better error tracking.
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+sites when adding links.
+
+### APP_USER_AGENT
+
+```
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+```
+
+The user agent may be customized to enhance credibility.
+
+### META_GENERATION_TIMEOUT
+
+```
+META_GENERATION_TIMEOUT=20
+```
+
+The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
+
+### META_GENERATION_CUSTOM_HEADERS
+
+```
+META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
+```
+
+You can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
+
+## Backup Configuration
+
+
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### BACKUP_ARCHIVE_PASSWORD
+
+```
+BACKUP_ARCHIVE_PASSWORD=
+```
+
+Set a password to encrypt backup archives. Leave empty for unencrypted backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### AWS_URL
+
+```
+AWS_URL=
+```
+
+Custom URL for accessing your S3 bucket or S3-compatible service.
+
+### AWS_ENDPOINT
+
+```
+AWS_ENDPOINT=
+```
+
+Custom endpoint for S3-compatible services (e.g., MinIO, DigitalOcean Spaces).
+
+### AWS_USE_PATH_STYLE_ENDPOINT
+
+```
+AWS_USE_PATH_STYLE_ENDPOINT=[true/false]
+```
+
+Enable path-style endpoint URLs (bucket.s3.region.amazonaws.com/key vs s3.region.amazonaws.com/bucket/key). Required for some S3-compatible services.
+
+⚠️ Warning: Only use these advanced settings if you know what you are doing.
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+### CACHE_DRIVER
+```
+CACHE_DRIVER=file
+```
+Set the default cache driver. Options include `file`, `redis`, `memcached`, `database`, and others.
+
+### Redis Cache
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_USERNAME=
+REDIS_DB=0
+REDIS_CACHE_DB=1
+```
+Set the Redis connection here if you want to use it. `REDIS_DB` is used for general Redis connections, while `REDIS_CACHE_DB` is specifically for cache storage.
+
+### Memcache Configuration
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+Configure Memcache settings if you want to use it for caching.
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+sites when adding links.
+
+### APP_USER_AGENT
+
+```
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+```
+
+The user agent may be customized to enhance credibility.
+
+### META_GENERATION_TIMEOUT
+
+```
+META_GENERATION_TIMEOUT=20
+```
+
+The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
+
+### META_GENERATION_CUSTOM_HEADERS
+
+```
+META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
+```
+
+You can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
+
+## Backup Configuration
+
+
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### BACKUP_ARCHIVE_PASSWORD
+
+```
+BACKUP_ARCHIVE_PASSWORD=
+```
+
+Set a password to encrypt backup archives. Leave empty for unencrypted backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+### Basic S3 Settings
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### AWS_URL
+```
+AWS_URL=
+```
+Custom URL for accessing your S3 bucket or S3-compatible service.
+
+### AWS_ENDPOINT
+```
+AWS_ENDPOINT=
+```
+Custom endpoint for S3-compatible services (e.g., MinIO, DigitalOcean Spaces).
+
+### AWS_USE_PATH_STYLE_ENDPOINT
+```
+AWS_USE_PATH_STYLE_ENDPOINT=[true/false]
+```
+Enable path-style endpoint URLs (bucket.s3.region.amazonaws.com/key vs s3.region.amazonaws.com/bucket/key). Required for some S3-compatible services.
+
+⚠️ **Warning:** Only use these advanced settings if you know what you are doing.
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+sites when adding links.
+
+### APP_USER_AGENT
+
+```
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+```
+
+The user agent may be customized to enhance credibility.
+
+### META_GENERATION_TIMEOUT
+
+```
+META_GENERATION_TIMEOUT=20
+```
+
+The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
+
+### META_GENERATION_CUSTOM_HEADERS
+
+```
+META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
+```
+
+You can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
+
+## Backup Configuration
+
+### BACKUP_ENABLED
+```
+BACKUP_ENABLED=false
+```
+Enable backups here.
+
+### BACKUP_DISK
+```
+BACKUP_DISK=s3
+```
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within `/storage/app/backups`.
+
+### BACKUP_ARCHIVE_PASSWORD
+```
+BACKUP_ARCHIVE_PASSWORD=
+```
+Set a password to encrypt backup archives. Leave empty for unencrypted backups.
+
+### Backup Notifications
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+tes when adding links.
+
+### APP_USER_AGENT
+
+```
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+```
+
+The user agent may be customized to enhance credibility.
+
+### META_GENERATION_TIMEOUT
+
+```
+META_GENERATION_TIMEOUT=20
+```
+
+The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
+
+### META_GENERATION_CUSTOM_HEADERS
+
+```
+META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
+```
+
+You can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
+
+## Backup Configuration
+
+
+
+### BACKUP_ENABLED
+
+```
+BACKUP_ENABLED=false
+```
+
+Enable backups here.
+
+### BACKUP_DISK
+
+```
+BACKUP_DISK=s3
+```
+
+Choose the destination of the backup. If you set up AWS S3 credentials, you may choose 'cloud' which is used as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+s.
+
+### Backup Notifications
+
+```
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
+BACKUP_NOTIFICATION_EMAIL=[email protected]
+```
+
+You may disable notifications for backups (not recommended, as possible issues may not be reported). The notification email may be used to get backup notifications. Mail must be configured for this to work!
+
+### Backup Size and Schedule
+
+```
+BACKUP_MAX_SIZE=512
+BACKUP_CLEAN_HOUR="01:00"
+BACKUP_RUN_HOUR="02:00"
+```
+
+Maximum size of the backups in megabytes. Backup tasks are run nightly every day. You can change the hour of the executions here.
+
+## AWS S3 Configuration
+
+
+
+### Basic S3 Settings
+
+```
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+```
+
+Define the key ID, the access key, the region and your bucket name here if you want to use AWS S3 for backups.
+
+### Advanced S3 Settings
+
+```
+AWS_SCHEME=https
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
+```
+
+⚠️ Warning: Only use these settings if you know what you are doing.
+
+## Cache Configuration
+
+
+
+### Redis Cache
+
+```
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=ChangeThisToASecurePassword!
+REDIS_PORT=6379
+REDIS_DB=0
+```
+
+Set the Redis connection here if you want to use it.
+
+### Memcache Configuration
+
+```
+MEMCACHED_PERSISTENT_ID=
+MEMCACHED_USERNAME=
+MEMCACHED_PASSWORD=
+MEMCACHED_HOST=127.0.0.1
+MEMCACHED_PORT=11211
+```
+
+Configure Memcache settings if you want to use it for caching.
+
+## Security and Monitoring
+
+
+
+### AUDITING_ENABLED
+
+```
+AUDITING_ENABLED=[true/false]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+se]
+```
+
+You can completely disable all audit logs for LinkAce with this option.
+
+### TRUSTED_PROXIES
+
+```
+TRUSTED_PROXIES=*
+```
+
+Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
+
+### Sentry Configuration
+
+```
+SENTRY_LARAVEL_DSN=
+SENTRY_TRACES_SAMPLE_RATE=0.0
+```
+
+Configure LinkAce to report errors to Sentry.io.
+
+## Advanced System Configuration
+
+⚠️ Warning: You probably do not want to change any values below. Only continue if you know what you are doing.
+
+### System Drivers
+
+```
+SESSION_DRIVER=file
+LOG_CHANNEL=stack
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_DRIVER=database
+```
+
+If you are using Redis, you may switch SESSION_DRIVER and CACHE_DRIVER to "redis" or "memcache" to improve performance.
+
+### Using Redis Sockets
+
+```
+CACHE_DRIVER=redis-socket
+SESSION_CONNECTION=redis-socket
+REDIS_SCHEME=unix
+REDIS_PATH=/path/to/redis.sock
+```
+
+If you want to use Redis via a Unix socket, you can configure these settings. Set a proper path to your Redis socket.

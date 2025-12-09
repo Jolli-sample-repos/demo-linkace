@@ -2,11 +2,21 @@
 title: Setup without Docker
 ---
 
-{/* Build timestamp: 1765312803786 - Forces cache invalidation */}
+{/* Build timestamp: 1765316906809 - Forces cache invalidation */}
 
 **Last Updated:** 12/9/2025
 
 ---
+
+article_type: jolliscript
+on:
+  - jrn: /root/integrations/*/*/*
+    verb: GIT_PUSH
+job:
+  steps:
+    - name: "Update Article"
+      run_prompt: |
+        check out the repo and see the last change both summary and details, if the article contains factual differences with what has just changed in the repository, make edits via the add/delete/update_section tool 
 
 
 
@@ -18,7 +28,7 @@ Since this application was designed for Docker, consider the following steps as 
 
 * A Linux-based server with full command line access
 * The `storage` directory inside LinkAce must be writable by the web server
-* **PHP 8.1 to 8.4**, with the following extensions
+* **PHP 8.1, 8.2, 8.3, 8.4, or 8.5** (actively tested versions), with the following extensions
   * BCMath
   * Ctype
   * DOM

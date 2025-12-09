@@ -44,5 +44,6 @@ export default {
     title: 'Linkace Openapi',
     type: 'page',
     href: '/api-docs-linkace-openapi.html'
-  }
+  },
+  'advanced-settings': 'Advanced Settings'
 }
