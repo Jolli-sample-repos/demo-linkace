@@ -18,5 +18,7 @@ export default {
     title: 'Linkace Openapi',
     type: 'page',
     href: '/api-docs-linkace-openapi.html'
-  }
+  },
+  'lists': 'Lists',
+  'link-checks': 'Link Checks'
 }
