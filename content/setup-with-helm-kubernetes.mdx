@@ -1,0 +1,29 @@
+---
+title: Setup with Helm (Kubernetes)
+---
+
+{/* Build timestamp: 1765308402357 - Forces cache invalidation */}
+
+**Last Updated:** 12/9/2025
+
+---
+
+# Setup with Helm (Kubernetes)
+
+This Helm chart can be used to deploy LinkAce to your Kubernetes cluster. Please note that this chart deploys the full application stack by default, including a MariaDB database and Redis for caching. It is possible to use an existing database or Redis. Please see the values.yml file for details.
+
+Note: This Helm Chart is currently a beta version. Please give feedback if you are using it.
+
+## Helm Chart
+
+Please visit the [**Helm Chart documentation**](https://github.com/Kovah/LinkAce/tree/2.x/deploy) in the repository for the current version of the chart with usage instructions.
+
+## Follow the post-installation steps
+
+Note: Please make sure to follow the [post-installation steps](https://www.linkace.org/docs/v2/setup/post-setup/) now to fully enable all features.
+
+---
+
+## Compatibility with other Tools
+
+* **Watchtower**: Several users reported broken LinkAce installations after Watchtower ran updates. Please exclude LinkAce from Watchtower and only update manually to properly run all update steps.

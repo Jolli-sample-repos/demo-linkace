@@ -1,0 +1,150 @@
+---
+title: Upgrade from LinkAce v1
+---
+
+{/* Build timestamp: 1765308402357 - Forces cache invalidation */}
+
+**Last Updated:** 12/9/2025
+
+---
+
+# Upgrade from LinkAce v1
+
+Please follow these instructions to upgrade LinkAce to the new version 2.
+
+## Preparation
+
+Before upgrading, make sure to create a backup of your database and your `.env` file.
+
+## Breaking changes
+
+There are several breaking changes you should be aware of:
+
+* The Docker image was renamed:
+  * `linkace/linkace:simple` and `linkace/linkace:php-nginx` are now `linkace/linkace`
+  * The advanced installation method with separate containers is no longer available
+* Link visibility was changed:
+  * The `private` and `public` options were replaced with a single `internal` option
+  * All links will be migrated to the new visibility system automatically
+* The backup feature was removed from LinkAce. Please use database backups instead.
+* The `.env` variable `MAIL_DRIVER` was renamed to `MAIL_MAILER` to match Laravel defaults.
+  * If you use `MAIL_DRIVER=smtp`, please change it to `MAIL_MAILER=smtp`
+
+Please make sure to read the [v2 documentation](https://www.linkace.org/docs/v2/) for more information about the new features and changes.
+
+## Select your current installation method
+
+Please select the installation method you used for LinkAce v1:
+
+* [Upgrade a simple Docker installation](#upgrade-a-simple-docker-installation)
+* [Upgrade a manual Docker installation](#upgrade-a-manual-docker-installation)
+* [Upgrade an advanced Docker installation](#upgrade-an-advanced-docker-installation)
+* [Upgrade a non-Docker installation](#upgrade-a-non-docker-installation)
+
+## Upgrade a simple Docker installation
+
+LinkAce no longer has a dedicated "simple" image. Thus, the Docker image was renamed from `linkace/linkace:simple` or `linkace/linkace:php-nginx` to `linkace/linkace`.
+
+### 1. Prepare your current installation
+
+After taking a backup, stop your current containers:
+
+```bash
+docker compose down
+```
+
+### 2. Adjust the docker-compose.yml file
+
+In your `docker-compose.yml` file, rename the Docker image of LinkAce from `linkace/linkace:simple` or `linkace/linkace:php-nginx` to `linkace/linkace`. The port used inside the container stays at `80` and must not be changed.
+
+You can take a look at the [docker-compose.yml](https://github.com/Kovah/LinkAce/blob/2.x/docker-compose.production.yml) and [.env](https://github.com/Kovah/LinkAce/blob/2.x/.env.docker.production) files directly and adopt it to your own setup if needed.
+
+### 3. Running the data migration
+
+After adjusting the docker-compose.yml file or your personal setup, restart your container:
+
+```bash
+docker compose up -d
+```
+
+Now, run the database migrations and delete the current cache. The migration can take quite a while depending on your amount of links, lists and tags saved.
+
+```bash
+docker compose exec app php artisan migrate
+docker compose exec app php artisan cache:clear
+```
+
+You may get a warning about running the migration in production mode. You should confirm the migration by answering with `yes`.
+
+## Upgrade a manual Docker installation
+
+As there was no specific guide for installing LinkAce v1 via `docker run` or any other non-Compose environment, we can't give general advice on upgrading your installation.
+
+### 1. The Docker image was renamed
+
+Whatever your Docker setup looks like, you have to rename your used LinkAce image from `linkace/linkace:simple` or `linkace/linkace:php-nginx` to `linkace/linkace`.
+
+If you used `linkace/linkace` before, there is no longer an advanced installation method. LinkAce ships in a single Docker image containing a web server ready for production use. You likely have to change the deployment and adopt the new structure and used ports.
+
+You can take a look at the [docker-compose.yml](https://github.com/Kovah/LinkAce/blob/2.x/docker-compose.production.yml) and [.env](https://github.com/Kovah/LinkAce/blob/2.x/.env.docker.production) files directly to check how LinkAce is now supposed to be used.
+
+### 2. Running the data migration
+
+After you upgraded your LinkAce Docker setup, the following commands must be run inside the LinkAce container:
+
+```bash
+php artisan migrate
+php artisan cache:clear
+```
+
+This could be done by running `docker run -it linkace php artisan migrate`, for example, but depends on your environment.
+
+## Upgrade an advanced Docker installation
+
+There is no longer an advanced installation method. LinkAce ships in a single Docker image containing a web server ready for production use.
+
+### 1. Prepare your current installation
+
+After taking a backup, stop your current containers:
+
+```bash
+docker compose down
+```
+
+### 2. Adjust the docker-compose.yml file
+
+Please download the Docker setup package and replace your existing `docker-compose.yml` file. Do NOT overwrite your .env file!
+
+👉 [**linkace-docker.zip**](https://github.com/Kovah/LinkAce/releases/latest)
+
+Alternatively, you can take a look at the [docker-compose.yml](https://github.com/Kovah/LinkAce/blob/2.x/docker-compose.production.yml) and [.env](https://github.com/Kovah/LinkAce/blob/2.x/.env.docker.production) files directly and adopt it to your own setup.
+
+### 3. Running the data migration
+
+After adjusting the docker-compose.yml file or your personal setup, restart your container:
+
+```bash
+docker compose up -d
+```
+
+Now, run the database migrations and delete the current cache. The migration can take quite a while depending on your amount of links, lists and tags saved.
+
+```bash
+docker compose exec app php artisan migrate
+docker compose exec app php artisan cache:clear
+```
+
+You may get a warning about running the migration in production mode. You should confirm the migration by answering with `yes`.
+
+## Upgrade a non-Docker installation
+
+If you installed LinkAce without Docker, please follow the [update guide for non-Docker installations](https://www.linkace.org/docs/v2/upgrade/update-instructions/#upgrade-without-docker).
+
+After the update, run the following commands:
+
+```bash
+php artisan migrate
+php artisan cache:clear
+```
+
+You may get a warning about running the migration in production mode. You should confirm the migration by answering with `yes`.

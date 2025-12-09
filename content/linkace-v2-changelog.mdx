@@ -1,0 +1,203 @@
+---
+title: LinkAce v2 Changelog
+---
+
+{/* Build timestamp: 1765308402357 - Forces cache invalidation */}
+
+**Last Updated:** 12/9/2025
+
+---
+
+# LinkAce v2 Changelog
+
+## Table of Contents
+
+## 2.4.1
+
+*Released at 2025-11-21*
+
+* LinkAce now officially supports PHP 8.5.
+* Minor dependency updates, including possible security patches.
+
+## 2.4.0
+
+*Released at 2025-10-24*
+
+* **Important security patches, please update as soon as possible**:
+  + Sharing of links is now properly escaped within the application, preventing XSS attacks
+  + RSS feeds no longer contain private links.
+  + Private links are no longer exported in HTML exports.
+  + Minor change: LinkAce won't fetch keyword suggestions for tags from private and reserved IP addresses like `192.168.x.x` or `10.72.x.x`.
+  + Permission checks of system tokens were corrected to reflect the actual API usage, not the in-browser UI.
+* Private RSS feeds can be accessed by using `?api_token=3|tq3K7r...` within the URL again ([#1034](https://github.com/Kovah/LinkAce/issues/1034))
+* Filter tags by search in the tags overview @Alitindrawan24 ([#1028](https://github.com/Kovah/LinkAce/issues/1028))
+* System tokens don't fail while updating links via the API anymore ([#1013](https://github.com/Kovah/LinkAce/issues/1013))
+* System tokens are now able to properly delete entities via the API
+* Lists and tags starting with numbers like `10 best Soup recipes` are correctly parsed in the List and Tags select while adding Links ([#1017](https://github.com/Kovah/LinkAce/issues/1017))
+* Dependencies were updated.
+
+## 2.3.1
+
+*Released at 2025-09-16*
+
+* Fix for disabling TLS verification for SMTP connections ([#1012](https://github.com/Kovah/LinkAce/issues/1012))
+* Minor security fix: user names are only allowed to have alpha-numeric characters and dashes.
+* Dependencies were updated.
+
+## 2.3.0
+
+*Released at 2025-09-07*
+
+* Allow more configuration options for connecting to the database via SSL, see [.env Settings](https://www.linkace.org/docs/v2/configuration/env-settings/) for details ([#949](https://github.com/Kovah/LinkAce/issues/949))
+* Improvement for handling existing (even trashed) links during adding or editing links ([#1004](https://github.com/Kovah/LinkAce/issues/1004))
+* Improve handling of non-existing links, lists or tags for Postgres databases ([#1005](https://github.com/Kovah/LinkAce/issues/1005))
+* Adding new tags or lists correctly takes default privacy settings into account ([#1001](https://github.com/Kovah/LinkAce/issues/1001)))
+* Link sharing button is removed when no sharing services are enabled ([#991](https://github.com/Kovah/LinkAce/issues/991)))
+* New option for OIDC logins: SSO\_OIDC\_VERIFY\_JWT which enables JWT verification and now defaults to true
+* Dependencies were updated
+
+## 2.2.0
+
+*Released at 2025-08-31*
+
+* Allow disabling TLS/SSL verification when using SMTP for sending mails ([#986](https://github.com/Kovah/LinkAce/issues/986)
+* Selecting tags or lists now prefer existing entries instead of creating new ones ([#992](https://github.com/Kovah/LinkAce/issues/992)
+* Allow users to search shared links by @KobyW in [#976](https://github.com/Kovah/LinkAce/issues/976)
+* Fix markdown rendering in link lists by using formatted\_description attribute in [#994](https://github.com/Kovah/LinkAce/issues/994)
+* Add comprehensive GitHub Copilot instructions for LinkAce development in [#996](https://github.com/Kovah/LinkAce/issues/996)
+* LinkAce now uses the official Redis docker image instead of the Bitnami one, as Bitnami deprecated their images.
+* Dependencies were updated
+
+## 2.1.9
+
+*Released at 2025-07-14*
+
+* Fixes a minor security issue where existing links could be updated with Javascript code.
+* Dependencies were updated.
+
+## 2.1.8
+
+*Released at 2025-06-19*
+
+* Tag and List relations are now properly removed for deleted Links. ([#941](https://github.com/Kovah/LinkAce/issues/941))
+* Dependencies were updated.
+
+## 2.1.7
+
+*Released at 2025-03-27*
+
+* Links can now properly be sorted on the details page of Lists. ([#941](https://github.com/Kovah/LinkAce/issues/941))
+* Minor fixes and adjustments for the SQLite web setup.
+* Dependencies were updated.
+
+## 2.1.6
+
+*Released at 2025-03-21*
+
+* Fixes the search after it was not working correctly when searching with tags or lists
+
+## 2.1.5
+
+*Released at 2025-03-20*
+
+* The SSO login is now correctly shown in when using the bookmarklet. Thanks to [@geoffholden](https://github.com/geoffholden) for his first contribution. [#932](https://github.com/Kovah/LinkAce/issues/932)
+* Handling of tag and list selects was overhauled to fix ghost-tags being created during bulk-editing. ([#936](https://github.com/Kovah/LinkAce/issues/936))
+* The setup now uses psql instead of pg\_restore for Postgres databases for better compatibility.
+* Minor design fixes.
+* Dependencies were updated.
+
+## 2.1.4
+
+*Released at 2025-02-26*
+
+* **The API now validates `content-type` and `accept` headers for POST, PATCH and DELETE requests.** Those headers were required for the API to work properly, so client should send them already. If you run into issues where LinkAce responds with `415` HTTP errors, please make sure that your client properly sets the required `content-type` and `accept` headers. Thanks to [@prplecake](https://github.com/prplecake) for his awesome debugging and contribution. [#885](https://github.com/Kovah/LinkAce/issues/885)
+* Internal or private links are now properly displayed on tag and list pages. ([#914](https://github.com/Kovah/LinkAce/issues/914))
+* The setup handles database passwords with special characters now. ([#927](https://github.com/Kovah/LinkAce/issues/927))
+* Permissions for the `storage` directory were adjusted for Docker and PHP release packages. ([#879](https://github.com/Kovah/LinkAce/issues/879))
+* Dependencies were updated.
+
+## 2.1.3
+
+*Released at 2025-02-16*
+
+* Fixes the 2.1.2 release.
+
+## 2.1.2
+
+*Released at 2025-02-15*
+
+* Adds Bluesky as a sharing option. ([#909](https://github.com/Kovah/LinkAce/issues/909))
+* Fixes issue with sorting links on tag or list pages randomly.
+* You can now configure some more advanced settings via the .env file. See [.env Settings](https://www.linkace.org/docs/v2/configuration/env-settings/) for more details.
+
+## 2.1.1
+
+*Released at 2025-02-11*
+
+* Fixes critical issue where links were deleted when bulk-deleting tags. ([#897](https://github.com/Kovah/LinkAce/issues/897))
+* Fixes and issue where bulk-editing tags or lists for links resulted in an unexpected behavior. ([#905](https://github.com/Kovah/LinkAce/issues/905))
+* Links are now properly displayed when viewing lists of another user. ([#902](https://github.com/Kovah/LinkAce/issues/902))
+* Adds missing `SSO_KEYCLOAK_BASE_URL` to the configuration ([#904](https://github.com/Kovah/LinkAce/issues/904))
+* Dependencies were updated.
+
+## 2.1.0
+
+*Released at 2025-02-06*
+
+* Adds a new unversioned API endpoint which returns the current supported API version. ([#892](https://github.com/Kovah/LinkAce/issues/892)) Details can be found in the [API docs](https://api-docs.linkace.org/v2)
+* Backups should now run again properly, caused due to the handling of disabled notifications.
+* Fixes issue with tags and lists in guest mode where the controller crashed due to incorrect URLs.
+* Dependencies were updated.
+
+## 2.0.0
+
+*Released at 2025-01-31*
+
+Please consult the [dedicated upgrade guide](https://www.linkace.org/docs/v2/upgrade/from-v1/) to update from LinkAce 1 to version 2.
+
+### Support for multiple users
+
+LinkAce now supports working with **multiple users**, which also includes a more advanced permission scheme as well as a new visibility setting for links, lists and tags ([#165](https://github.com/Kovah/LinkAce/issues/165))
+
+* Administrators can now control various system settings and invite new users.
+* Links, lists and tags can now be public, internal or private, which controls the visibility to the public as well as logged-in users.
+* Links, lists and tags are now displayed with the actual author so it's clear who added it.
+* Each user has its own API keys which can be used to work in the name of the user from third party applications. Additionally, admins can create system-wide API keys.
+* Link checks are now run for each user individually. Users only get notifications about broken oder unavailable links they own.
+
+Additionally, LinkAce now supports **Single Sign On** with OAuth or OIDC. 12 providers are already built-in, including one generic OIDC provider. Please consult the [dedicated SSO setup guide](https://www.linkace.org/docs/v2/configuration/sso-oauth-oidc/) for more details.
+
+### User Interface
+
+* Overhaul of the user interface for a clearer structure, fewer inconsistencies and more readable lists. ([#553](https://github.com/Kovah/LinkAce/issues/553))
+  + LinkAce now has three redesigned modes for displaying links: compact, detailed and as cards. This setting can be controlled directly from the interface, no settings are needed.
+  + The main navigation bar was adjusted so users need fewer clicks.
+  + Lists and tags are now loaded up-front when adding or editing links. This speeds up the process and allows near-instant searches.
+* Links, lists and tags can now be bulk-edited. ([#26](https://github.com/Kovah/LinkAce/issues/26))
+* Meta information was added for all relevant pages so your browser now displays more information. Contributed by chrissawyerfan4. ([#494](https://github.com/Kovah/LinkAce/issues/494))
+* The HTML templates now contain a lot of semantic and special CSS classes for easier customization. ([#437](https://github.com/Kovah/LinkAce/issues/437))
+* Customize LinkAce with a custom logo text, additional footer link or a custom contact page. ([#862](https://github.com/Kovah/LinkAce/issues/862) [#863](https://github.com/Kovah/LinkAce/issues/863) [#864](https://github.com/Kovah/LinkAce/issues/864))
+
+### Administration
+
+* Audit logs were rewritten and now also log events on the system level. ([#467](https://github.com/Kovah/LinkAce/issues/467))
+* There is a dedicated CLI command to test the email configuration. ([#500](https://github.com/Kovah/LinkAce/issues/500))
+* Importing & Exporting
+  + The import process was overhauled for better processing of large import files. Importing of links is now done in the background. ([#287](https://github.com/Kovah/LinkAce/issues/287))
+  + A unique tag is added to all links processed during an import, to identify them later on. ([#757](https://github.com/Kovah/LinkAce/issues/757))
+* Backups: you can now configure the hour when backups and cleaning tasks are started and disable any email notifications.
+
+### Running LinkAce
+
+* The Docker image for LinkAce was rewritten, is now based on the Caddy web server and runs rootless by default. ([#502](https://github.com/Kovah/LinkAce/issues/502))
+* A Helm chart is available for easily deploying LinkAce to your Kubernetes cluster. ([#870](https://github.com/Kovah/LinkAce/issues/870))
+* The setup was overhauled and now supports SQLite and PostgreSQL too. ([#831](https://github.com/Kovah/LinkAce/issues/831))
+* The way settings are stored was completely rewritten and is now more solid for both system and user settings. ([#494](https://github.com/Kovah/LinkAce/issues/494))
+* Lots of smaller corrections, adjustments and rewritten features to make LinkAce more stable.
+
+### API
+
+* Bulk editing for links, lists and tags is now available
+* Bulk adding for links, lists and tags is now available
+
+The complete API documentation can be found at [**api-docs.linkace.org**](https://api-docs.linkace.org).
