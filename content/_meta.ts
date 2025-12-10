@@ -45,7 +45,6 @@ export default {
     type: 'page',
     href: '/api-docs-linkace-openapi.html'
   },
-  'advanced-settings': 'Advanced Settings',
   'import': 'Import',
   'trash': 'Trash',
   'rss-feeds': 'RSS Feeds',
