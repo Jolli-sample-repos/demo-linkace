@@ -30,31 +30,35 @@ export default {
   },
   'the-dashboard': 'The Dashboard',
   'links': 'Links',
+  'link-checks': 'Link Checks',
   'lists': 'Lists',
+  'tags': 'Tags',
+  'advanced-search': 'Advanced Search',
+  'bookmarklet': 'Bookmarklet',
+  'rss-feeds': 'RSS Feeds',
+  'trash': 'Trash',
   'configuration-of-linkace': {
     type: 'separator',
     title: 'Configuration of LinkAce'
+  },
+  'import-links': 'Import Links',
+  'export-links': 'Export Links',
+  'user-settings': 'User Settings',
+  'user-api-tokens': 'User API Tokens',
+  'system-settings': 'System Settings',
+  'system-api-tokens': 'System API Tokens',
+  'user-management': 'User Management',
+  'sso-single-sign-on-with-oauth-or-oidc': 'SSO (Single-Sign-On) with OAuth or OIDC',
+  'application-backups': 'Application Backups',
+  'advanced-settings': 'Advanced Settings',
+  'cli-commands-linkace': {
+    type: 'separator',
+    title: 'CLI Commands for LinkAce'
   },
   'cli-commands-for-linkace': 'CLI Commands for LinkAce',
   'api-linkace-openapi': {
     title: 'Linkace Openapi',
     type: 'page',
     href: '/api-docs-linkace-openapi.html'
-  },
-  'trash': 'Trash',
-  'rss-feeds': 'RSS Feeds',
-  'tags': 'Tags',
-  'advanced-settings': 'Advanced Settings',
-  'application-backups': 'Application Backups',
-  'sso-single-sign-on-with-oauth-or-oidc': 'SSO (Single-Sign-On) with OAuth or OIDC',
-  'user-management': 'User Management',
-  'system-api-tokens': 'System API Tokens',
-  'system-settings': 'System Settings',
-  'user-settings': 'User Settings',
-  'user-api-tokens': 'User API Tokens',
-  'export-links': 'Export Links',
-  'import-links': 'Import Links',
-  'bookmarklet': 'Bookmarklet',
-  'advanced-search': 'Advanced Search',
-  'link-checks': 'Link Checks'
+  }
 }
