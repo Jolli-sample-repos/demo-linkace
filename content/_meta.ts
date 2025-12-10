@@ -35,10 +35,7 @@ export default {
     type: 'separator',
     title: 'Configuration of LinkAce'
   },
-  'cli-commands-for-linkace': {
-    type: 'separator',
-    title: 'CLI Commands for LinkAce'
-  },
+  'cli-commands-for-linkace': 'CLI Commands for LinkAce',
   'api-linkace-openapi': {
     title: 'Linkace Openapi',
     type: 'page',
@@ -46,5 +43,18 @@ export default {
   },
   'trash': 'Trash',
   'rss-feeds': 'RSS Feeds',
-  'tags': 'Tags'
+  'tags': 'Tags',
+  'advanced-settings': 'Advanced Settings',
+  'application-backups': 'Application Backups',
+  'sso-single-sign-on-with-oauth-or-oidc': 'SSO (Single-Sign-On) with OAuth or OIDC',
+  'user-management': 'User Management',
+  'system-api-tokens': 'System API Tokens',
+  'system-settings': 'System Settings',
+  'user-settings': 'User Settings',
+  'user-api-tokens': 'User API Tokens',
+  'export-links': 'Export Links',
+  'import-links': 'Import Links',
+  'bookmarklet': 'Bookmarklet',
+  'advanced-search': 'Advanced Search',
+  'link-checks': 'Link Checks'
 }
