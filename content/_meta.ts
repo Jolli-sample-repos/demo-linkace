@@ -1,5 +1,5 @@
 export default {
-  'index': 'Home',
+  'linkace-overview': 'LinkAce Overview',
   'general': {
     type: 'separator',
     title: 'General'
@@ -60,6 +60,5 @@ export default {
     title: 'Linkace Openapi',
     type: 'page',
     href: '/api-docs-linkace-openapi.html'
-  },
-  'linkace-overview': 'LinkAce Overview'
+  }
 }
