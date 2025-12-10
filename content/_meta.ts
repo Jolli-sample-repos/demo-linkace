@@ -1,4 +1,5 @@
 export default {
+  'index': 'Home',
   'linkace-overview': 'LinkAce Overview',
   'general': {
     type: 'separator',
