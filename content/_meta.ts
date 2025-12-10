@@ -31,7 +31,6 @@ export default {
   'the-dashboard': 'The Dashboard',
   'links': 'Links',
   'lists': 'Lists',
-  'link-checks': 'Link Checks',
   'configuration-of-linkace': {
     type: 'separator',
     title: 'Configuration of LinkAce'
@@ -45,10 +44,7 @@ export default {
     type: 'page',
     href: '/api-docs-linkace-openapi.html'
   },
-  'import': 'Import',
   'trash': 'Trash',
   'rss-feeds': 'RSS Feeds',
-  'bookmarklet': 'Bookmarklet',
-  'advanced-search': 'Advanced Search',
   'tags': 'Tags'
 }
