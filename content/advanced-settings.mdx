@@ -2,11 +2,13 @@
 title: Advanced Settings
 ---
 
-{/* Build timestamp: 1765419085882 - Forces cache invalidation */}
+{/* Build timestamp: 1765477621548 - Forces cache invalidation */}
 
-**Last Updated:** 12/10/2025
+**Last Updated:** 12/11/2025
 
 ---
+
+
 
 # Advanced Settings
 
@@ -38,7 +40,7 @@ API_RATE_LIMIT=60,1
 ## Mail configuration
 MAIL_FROM_ADDRESS=your@email.com
 MAIL_FROM_NAME=LinkAce
-# Set the driver used for sending email here, default is `log`
+# Set the mailer used for sending email here, default is `log`
 MAIL_MAILER=smtp
 # Set the SMTP host and its port here
 MAIL_HOST=smtp.mailtrap.io
@@ -75,13 +77,13 @@ DB_SSL_MODE=prefer
 MYSQL_VERIFY_SERVER_CERT=true
 MYSQL_SSL_KEY=
 MYSQL_SSL_CERT=
-MYSQL_SSL_CA= =
+MYSQL_SSL_CA=
 
 
 ## Meta generation
 ## Configure how LinkAce should handle HTTP requests when fetching the meta data of websites when adding links.
 # The user agent may be customized to enhance credibility.
-APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
+APP_USER_AGENT="LinkAce/2 (https://github.com/Kovah/LinkAce)"
 # The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
 META_GENERATION_TIMEOUT=20
 # You also can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
@@ -89,8 +91,8 @@ META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https:
 
 
 #### Backup configuration
-# Enable backups here
-BACKUP_ENABLED=false
+# Enable backups here. Default is true.
+BACKUP_ENABLED=true
 # Choose the destination of the backup. If you set up AWS S3 credentials below you may choose 'cloud' which is used
 # as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
 BACKUP_DISK=s3
@@ -98,8 +100,8 @@ BACKUP_DISK=s3
 BACKUP_NOTIFICATIONS_ENABLED=[true/false]
 # The notification email may be used to get backup notifications, Mail must be configured for this to work!
 BACKUP_NOTIFICATION_EMAIL=your@email.com
-# Maximum size of the backups in megabytes
-BACKUP_MAX_SIZE=512
+# Maximum size of the backups in megabytes. Default is 265 MB.
+BACKUP_MAX_SIZE=265
 # Backup tasks are run nightly every day. You can change the hour of the executions here
 BACKUP_CLEAN_HOUR="01:00"
 BACKUP_RUN_HOUR="02:00"
@@ -154,7 +156,7 @@ SESSION_DRIVER=file
 LOG_CHANNEL=stack
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
-QUEUE_DRIVER=database
+QUEUE_CONNECTION=database
 
 
 ## Using Redis sockets
