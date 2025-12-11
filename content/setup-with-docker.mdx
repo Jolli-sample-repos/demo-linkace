@@ -2,23 +2,24 @@
 title: Setup with Docker
 ---
 
-{/* Build timestamp: 1765409073355 - Forces cache invalidation */}
+{/* Build timestamp: 1765419085882 - Forces cache invalidation */}
 
 **Last Updated:** 12/10/2025
 
 ---
 
-
-
 # Setup with Docker
 
 Working with Docker is pretty straight forward, but you should be familiar with Docker. To make things easier, we provide Docker Compose files in the repository which contain all needed services, configured to just run the application right away.
 
-All images are available on the Docker Hub and on the GitHub Registry and support amd64, arm64 and amd/v7.
+All images are available on the [**Docker Hub**](https://hub.docker.com/r/linkace/linkace) and on the [**GitHub Registry**](https://github.com/Kovah/LinkAce/pkgs/container/linkace) and support `amd64`, `arm64` and `amd/v7`.
 
 ## Base Requirements
 
-Command-line access to your serverDocker version 19 or greaterDocker Compose is recommended for the setup, must support at least compose version 3Please consider using utf8mb4_bin as the database collation. Other collations like utf8mb4_general_ci may cause issues with different Unicode characters.
+* Command-line access to your server
+* Docker version 19 or greater
+* Docker Compose is recommended for the setup, must support at least compose version 3
+* Please consider using `utf8mb4_bin` as the database collation. Other collations like `utf8mb4_general_ci` *may* cause issues with different Unicode characters.
 
 ---
 
@@ -32,7 +33,7 @@ chmod 0766 database.sqlite
 docker run -p "8080:80" -v "./database.sqlite:/app/database/database.sqlite" linkace/linkace
 ```
 
-Then open http://localhost:8080 in your browser and follow the setup steps.
+Then open `http://localhost:8080` in your browser and follow the setup steps.
 
 If the LinkAce container is not starting, this might be caused by OS-specific permissions for Docker. In that case, try to run LinkAce on another internal port:
 
@@ -48,17 +49,18 @@ It is recommended to follow these setup steps to ensure that LinkAce is running 
 
 ### 1. Copy the needed files
 
-Download the Docker setup package from the LinkAce repository: linkace-docker.zip
+Download the Docker setup package from the LinkAce repository: [**linkace-docker.zip**](https://github.com/Kovah/LinkAce/releases/latest)
 
-Alternatively, you can take a look at the docker-compose.yml and .env files directly and adopt it to your own setup.
+Alternatively, you can take a look at the [docker-compose.yml](https://github.com/Kovah/LinkAce/blob/2.x/docker-compose.production.yml) and [.env](https://github.com/Kovah/LinkAce/blob/2.x/.env.docker.production) files directly and adopt it to your own setup.
 
 ### 2. Edit the base configuration
 
 You should change the following settings in the .env file before starting the setup:
 
-DB_PASSWORD - Please set a secure password hereREDIS_PASSWORD - Please set a secure password here
+* DB\_PASSWORD - Please set a secure password here
+* REDIS\_PASSWORD - Please set a secure password here
 
-If you are unsure if the .env file is writable inside Docker, please make it writable for anybody (-rw-rw-rw- or 666). You can switch back to read only after the setup.
+If you are unsure if the `.env` file is writable inside Docker, please make it writable for anybody (`-rw-rw-rw- or 666`). You can switch back to read only after the setup.
 
 Your directory should look like this now:
 
@@ -72,7 +74,7 @@ Your directory should look like this now:
 
 #### Using environment variables instead of an .env file
 
-You might move the configuration variables from the .env file into your docker-compose.yml file or Docker setup. If you do this, you must generate your own application key.
+You might move the configuration variables from the .env file into your docker-compose.yml file or Docker setup. If you do this, you **must** generate your own application key.
 
 ```
 $ docker run --rm -it linkace/linkace php artisan key:generate --show
@@ -102,13 +104,13 @@ docker compose up -d
 
 ### 4. Start the built-in setup
 
-Open the URL which points to your Docker container in your browser now. If you started LinkAce on your local machine, for example, the URL should be http://localhost or your domain pointing to LinkAce.
+Open the URL which points to your Docker container in your browser now. If you started LinkAce on your local machine, for example, the URL should be `http://localhost` or your domain pointing to LinkAce.
 
 You can configure the database and your user account in the following process.
 
 ### 5. Follow the post-installation steps
 
-Please make sure to follow the post-installation steps now to fully enable all features.
+Please make sure to follow the [post-installation steps](/docs/v2/setup/post-setup/) now to fully enable all features.
 
 ---
 
@@ -121,16 +123,16 @@ If you run into issues with the built-in setup via the web, you may try to compl
 Follow the instructions above until step 4. Then run the following commands. Please note that the database configuration must be done in the .env file BEFORE running the following commands.
 
 ```
-docker compose exec app php artisan migrate
-docker compose exec app php artisan setup:complete
-docker compose exec app php artisan registeruser --admin
+docker exec -it linkace_app_1 php artisan migrate
+docker exec -it linkace_app_1 php artisan setup:complete
+docker exec -it linkace_app_1 php artisan registeruser --admin
 ```
 
 The last command lets you create your first admin user. After all commands were successful, you can login right away at `http://localhost` or your domain pointing to LinkAce.
 
 ### Running Linkace behind a proxy / load balancer
 
-If you are using a proxy / load balancer with HTTPS, please make sure it sends the X-Forwarded-Proto and X-Forwarded-For headers to LinkAce. Otherwise, LinkAce won't be able to correctly generate URLs.
+If you are using a proxy / load balancer with HTTPS, please make sure it sends the `X-Forwarded-Proto` and `X-Forwarded-For` headers to LinkAce. Otherwise, LinkAce won't be able to correctly generate URLs.
 
 Nginx configuration example:
 
@@ -148,19 +150,28 @@ RequestHeader set X-Forwarded-Port "443"
 RequestHeader set X-Forwarded-Proto "https"
 ```
 
-LinkAce 2 accepts a $PORT environment variable to listen on the specified port for incoming connections. This might be useful for restricted Docker hosting environments such as Heroku.
+LinkAce 2 accepts a `$PORT` environment variable to listen on the specified port for incoming connections. This might be useful for restricted Docker hosting environments such as Heroku.
 
 ### Running LinkAce directly with SSL
 
 If you want to run LinkAce without a proxy but still want to use HTTPS, you must configure the built-in web server accordingly.
 
-First of all, stop your existing LinkAce setup. Make sure that your domain is properly configured to be accessible from the internet.Download the ssl.Caddyfile file, place it besides your docker-compose.yml file.Then, open your docker-compose.yml file and do the following adjustments:After image: docker.io/linkace/linkace:latest, add a new env like this and set your own domain:services:
-  # --- LinkAce
-  app:
-    image: docker.io/linkace/linkace:latest
-    environment:
-      LINKACE_DOMAIN: "your-linkace-domain.com"
-      PORT: 443Remove the hash in front of the - "0.0.0.0:443:443" line.Remove the hash in front of the - ./caddy-data:/home/www-data/.local/share/caddy and - ./ssl.Caddyfile:/etc/caddy/Caddyfile lines.
+1. First of all, stop your existing LinkAce setup. Make sure that your domain is properly configured to be accessible from the internet.
+2. Download the [ssl.Caddyfile](https://github.com/Kovah/LinkAce/blob/2.x/resources/docker/ssl.Caddyfile) file, place it besides your `docker-compose.yml` file.
+3. Then, open your `docker-compose.yml` file and do the following adjustments:
+4. After `image: docker.io/linkace/linkace:latest`, add a new `env` like this and set your own domain:
+
+   ```
+   services:
+     # --- LinkAce
+     app:
+       image: docker.io/linkace/linkace:latest
+       environment:
+         LINKACE_DOMAIN: "your-linkace-domain.com"
+         PORT: 443
+   ```
+5. Remove the hash in front of the `- "0.0.0.0:443:443"` line.
+6. Remove the hash in front of the `- ./caddy-data:/home/www-data/.local/share/caddy` and `- ./ssl.Caddyfile:/etc/caddy/Caddyfile` lines.
 
 Your docker-compose.yml file should now look like this:
 
@@ -187,14 +198,14 @@ services:
 ...
 ```
 
-After that, start the installation again with docker compose up -d.
+After that, start the installation again with `docker compose up -d`.
 
 The web server will now try to get the SSL certificate. After a short while you will be able to access LinkAce under your domain.
 
-If that doesn't work, check the logs of the web server with docker compose logs -f app.
+If that doesn't work, check the logs of the web server with `docker compose logs -f app`.
 
 ---
 
 ## Compatibility with other Tools
 
-Watchtower: Several users reported broken LinkAce installations after Watchtower ran updates. Please exclude LinkAce from Watchtower and only update manually to properly run all update steps.
+* **Watchtower**: Several users reported broken LinkAce installations after Watchtower ran updates. Please exclude LinkAce from Watchtower and only update manually to properly run all update steps.
