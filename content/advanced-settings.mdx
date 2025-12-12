@@ -2,12 +2,11 @@
 title: Advanced Settings
 ---
 
-{/* Build timestamp: 1765574798029 - Forces cache invalidation */}
+{/* Build timestamp: 1765581179030 - Forces cache invalidation */}
 
 **Last Updated:** 12/12/2025
 
 ---
-
 
 
 # Advanced Settings
@@ -30,7 +29,7 @@ APP_TIMEZONE=UTC
 # Set the time after a session expires automatically, in minutes. Default is 7 days. You may also define a specific domain.
 SESSION_LIFETIME=10080
 SESSION_DOMAIN=
-SESSION_SECURE_COOKIE=false
+SESSION_SECURE_COOKIE=[true/false]
 
 # Configure the API rate limit here: the first number defines the number of requests, the second the time frame
 # for the requests. 60,1 is the default which means: 60 requests per 1 minute
@@ -77,31 +76,31 @@ DB_SSL_MODE=prefer
 MYSQL_VERIFY_SERVER_CERT=true
 MYSQL_SSL_KEY=
 MYSQL_SSL_CERT=
-MYSQL_SSL_CA=
+MYSQL_SSL_CA= =
 
 
 ## Meta generation
 ## Configure how LinkAce should handle HTTP requests when fetching the meta data of websites when adding links.
 # The user agent may be customized to enhance credibility.
-APP_USER_AGENT="LinkAce/2 (https://github.com/Kovah/LinkAce)"
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
 # The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
-META_GENERATION_TIMEOUT=10
+META_GENERATION_TIMEOUT=20
 # You also can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
 META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https://example.com"
 
 
 #### Backup configuration
 # Enable backups here
-BACKUP_ENABLED=true
+BACKUP_ENABLED=false
 # Choose the destination of the backup. If you set up AWS S3 credentials below you may choose 'cloud' which is used
 # as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
 BACKUP_DISK=s3
 # You may disable notifications for backups. Not recommended, as possible issues may not be reported.
-BACKUP_NOTIFICATIONS_ENABLED=true
+BACKUP_NOTIFICATIONS_ENABLED=[true/false]
 # The notification email may be used to get backup notifications, Mail must be configured for this to work!
 BACKUP_NOTIFICATION_EMAIL=your@email.com
 # Maximum size of the backups in megabytes
-BACKUP_MAX_SIZE=265
+BACKUP_MAX_SIZE=512
 # Backup tasks are run nightly every day. You can change the hour of the executions here
 BACKUP_CLEAN_HOUR="01:00"
 BACKUP_RUN_HOUR="02:00"
@@ -116,13 +115,16 @@ AWS_BUCKET=
 
 # Advanced S3 settings, only use them if you know what you are doing
 AWS_SCHEME=https
-AWS_USE_PATH_STYLE_ENDPOINT=false
+AWS_BUCKET_ENDPOINT=[true/false]
+AWS_PATH_STYLE_ENDPOINT=[true/false]
+AWS_ACCELERATE_ENDPOINT=[true/false]
+AWS_FIPS_ENDPOINT=[true/false]
+AWS_DUAL_STACK_ENDPOINT=[true/false]
 
 
 ## Redis cache configuration
 # Set the Redis connection here if you want to use it
 REDIS_HOST=127.0.0.1
-REDIS_USERNAME=
 REDIS_PASSWORD=ChangeThisToASecurePassword!
 REDIS_PORT=6379
 REDIS_DB=0
@@ -136,7 +138,7 @@ MEMCACHED_PORT=11211
 
 
 # You can completely disable all audit logs for LinkAce with this option
-AUDITING_ENABLED=true
+AUDITING_ENABLED=[true/false]
 
 # Set some trusted proxies if you want to enhance the security of LinkAce when it's running behind a proxy.
 TRUSTED_PROXIES=*
@@ -153,7 +155,7 @@ SESSION_DRIVER=file
 LOG_CHANNEL=stack
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
-QUEUE_CONNECTION=database
+QUEUE_DRIVER=database
 
 
 ## Using Redis sockets

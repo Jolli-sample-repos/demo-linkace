@@ -1,5 +1,5 @@
 export default {
-  'index': 'Home',
+  'index': { display: 'hidden' },
   'linkace-overview': 'LinkAce Overview',
   'general': {
     type: 'separator',
@@ -57,9 +57,9 @@ export default {
     title: 'CLI Commands for LinkAce'
   },
   'cli-commands-for-linkace': 'CLI Commands for LinkAce',
-  'api-linkace-openapi': {
-    title: 'Linkace Openapi',
+  'api-reference': {
+    title: 'API Reference',
     type: 'page',
-    href: '/api-docs-linkace-openapi.html'
+    href: '/api-docs/linkace-openapi'
   }
 }
