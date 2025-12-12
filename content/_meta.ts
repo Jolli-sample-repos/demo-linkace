@@ -57,6 +57,11 @@ export default {
     title: 'CLI Commands for LinkAce'
   },
   'cli-commands-for-linkace': 'CLI Commands for LinkAce',
+  'linkace-docs': {
+    title: 'Docs',
+    type: 'page',
+    href: '/'
+  }
   'api-reference': {
     title: 'API Reference',
     type: 'page',
