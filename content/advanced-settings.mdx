@@ -2,12 +2,11 @@
 title: Advanced Settings
 ---
 
-{/* Build timestamp: 1768937030347 - Forces cache invalidation */}
+{/* Build timestamp: 1769021236604 - Forces cache invalidation */}
 
-**Last Updated:** 1/20/2026
+**Last Updated:** 1/21/2026
 
 ---
-
 
 
 # Advanced Settings
@@ -21,7 +20,7 @@ APP_URL=http://localhost
 # The environment is usually 'production' but may be changed to 'local' for development
 APP_ENV=production
 
-# Enable the debug mode if you are running into issues or while developing
+# Enable the debug more if you are running into issues or while developing
 APP_DEBUG=false
 
 # Change the timezone of the core application here. It does not affect the timezone set in the user settings but changes how LinkAce saves dates and times in the database. Be very careful when using this setting as it can have unintended site effects! There won't be any support for broken applications due to a changed timezone.
@@ -77,13 +76,13 @@ DB_SSL_MODE=prefer
 MYSQL_VERIFY_SERVER_CERT=true
 MYSQL_SSL_KEY=
 MYSQL_SSL_CERT=
-MYSQL_SSL_CA=
+MYSQL_SSL_CA= =
 
 
 ## Meta generation
 ## Configure how LinkAce should handle HTTP requests when fetching the meta data of websites when adding links.
 # The user agent may be customized to enhance credibility.
-APP_USER_AGENT="LinkAce/2 (https://github.com/Kovah/LinkAce)"
+APP_USER_AGENT="LinkAce/1 (https://github.com/Kovah/LinkAce)"
 # The timeout is 10 seconds by default. If you encounter failed meta generation more often, consider increasing this.
 META_GENERATION_TIMEOUT=20
 # You also can add custom headers, for example to customize the Accept-Language header. Multiple headers must be separated by a pipe (|).
@@ -91,17 +90,17 @@ META_GENERATION_CUSTOM_HEADERS="Accept-Language=fr-CH,fr;q=0.9,en|referer=https:
 
 
 #### Backup configuration
-# Enable backups here. Default is true.
-BACKUP_ENABLED=true
-# Choose the destination of the backup. Default is 'local_backups' which stores backups within /storage/app/backups.
-# If you set up AWS S3 credentials below you may choose 's3' to store backups in the cloud.
-BACKUP_DISK=local_backups
+# Enable backups here
+BACKUP_ENABLED=false
+# Choose the destination of the backup. If you set up AWS S3 credentials below you may choose 'cloud' which is used
+# as a synonym for AWS. Leave blank or set to 'local_backups' if you want to store backups within /storage/app/backups.
+BACKUP_DISK=s3
 # You may disable notifications for backups. Not recommended, as possible issues may not be reported.
 BACKUP_NOTIFICATIONS_ENABLED=[true/false]
 # The notification email may be used to get backup notifications, Mail must be configured for this to work!
 BACKUP_NOTIFICATION_EMAIL=your@email.com
-# Maximum size of the backups in megabytes. Default is 265.
-BACKUP_MAX_SIZE=265
+# Maximum size of the backups in megabytes
+BACKUP_MAX_SIZE=512
 # Backup tasks are run nightly every day. You can change the hour of the executions here
 BACKUP_CLEAN_HOUR="01:00"
 BACKUP_RUN_HOUR="02:00"
@@ -156,7 +155,7 @@ SESSION_DRIVER=file
 LOG_CHANNEL=stack
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
-QUEUE_CONNECTION=database
+QUEUE_DRIVER=database
 
 
 ## Using Redis sockets
